@@ -1,10 +1,8 @@
 package br.com.gabrielflorentino.java.back.end.dto;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import jakarta.annotation.PostConstruct;
+import br.com.gabrielflorentino.java.back.end.model.User;
 
 public class UserDTO {
 
@@ -61,6 +59,17 @@ public class UserDTO {
 
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
+	}
+	
+	public static UserDTO convert(User user) {
+		UserDTO userDTO = new UserDTO();
+		userDTO.setNome(user.getNome());
+		userDTO.setEndereco(user.getEndereco());
+		userDTO.setCpf(user.getCpf());
+		userDTO.setEmail(user.getEmail());
+		userDTO.setTelefone(user.getTelefone());
+		userDTO.setDataCadastro(user.getDataCadastro());
+		return userDTO;
 	}
 
 }

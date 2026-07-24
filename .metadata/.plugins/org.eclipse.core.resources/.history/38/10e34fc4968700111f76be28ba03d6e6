@@ -1,0 +1,5 @@
+package br.com.gabrielflorentino.java.back.end.model;
+
+public class User {
+
+}
