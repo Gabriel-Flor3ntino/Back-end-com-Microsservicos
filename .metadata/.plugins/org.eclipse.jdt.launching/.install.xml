@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dirs>
+    <entry loc="/home/gabriel_florentino/.sdkman/candidates/java/17.0.11-tem" stamp="1713334029000"/>
+    <entry loc="/home/gabriel_florentino/.sdkman/candidates/java/21.0.11-oracle" stamp="1778584406000"/>
+    <entry loc="/home/gabriel_florentino/.sdkman/candidates/java/17.0.19-tem" stamp="1776807082000"/>
+    <entry loc="/usr/lib/jvm/jdk-25.0.1-oracle-x64" stamp="1762282018345"/>
+    <entry loc="/home/gabriel_florentino/.sdkman/candidates/java/16.0.2-tem" stamp="1626984746000"/>
+    <entry loc="/home/gabriel_florentino/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_25.0.2.v20260203-1141" stamp="1776516393612"/>
+    <entry loc="/home/gabriel_florentino/.sdkman/candidates/java/25.0.2-open" stamp="1770106414000"/>
+    <entry loc="/usr/lib/jvm/temurin-25-jdk-amd64" stamp="1781525392385"/>
+    <entry loc="/home/gabriel_florentino/.sdkman/candidates/java/17.0.12-oracle" stamp="1782439450000"/>
+    <entry loc="/home/gabriel_florentino/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_25.0.2.v20260203-1141/jre" stamp="1776516393612"/>
+    <entry loc="/usr/lib/jvm/java-17-openjdk-amd64" stamp="1781525381351"/>
+    <entry loc="/home/gabriel_florentino/.sdkman/candidates/java/11.0.31-tem" stamp="1777124054000"/>
+    <entry loc="/home/gabriel_florentino/.sdkman/candidates/java/25.0.3-oracle" stamp="1778584558000"/>
+    <entry loc="/home/gabriel_florentino/.sdkman/candidates/java/26.0.1-amzn" stamp="1780398753000"/>
+</dirs>
