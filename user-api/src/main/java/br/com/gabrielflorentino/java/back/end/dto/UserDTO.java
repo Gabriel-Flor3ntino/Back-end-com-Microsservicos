@@ -6,19 +6,19 @@ import br.com.gabrielflorentino.java.back.end.model.User;
 
 public class UserDTO {
 
-	private String nome;
+	private String name;
 	private String cpf;
 	private String endereco;
 	private String email;
 	private String telefone;
 	private Date dataCadastro;
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getCpf() {
@@ -63,7 +63,7 @@ public class UserDTO {
 	
 	public static UserDTO convert(User user) {
 		UserDTO userDTO = new UserDTO();
-		userDTO.setNome(user.getNome());
+		userDTO.setName(user.getName());
 		userDTO.setEndereco(user.getEndereco());
 		userDTO.setCpf(user.getCpf());
 		userDTO.setEmail(user.getEmail());

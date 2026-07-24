@@ -13,7 +13,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private String nome;
+	private String name;
 	private String cpf;
 	private String endereco;
 	private String email;
@@ -28,12 +28,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getCpf() {
@@ -78,7 +78,7 @@ public class User {
 
 	public static User convert(UserDTO userDTO) {
 		User user = new User();
-		user.setNome(userDTO.getNome());
+		user.setName(userDTO.getName());
 		user.setEndereco(userDTO.getEndereco());
 		user.setCpf(userDTO.getCpf());
 		user.setEmail(userDTO.getEmail());
