@@ -1,5 +1,0 @@
-INDEX VERSION 1.134+/home/gabriel_florentino/Área de Trabalho/Cursos Java/Projetos dos Livros/Back-end Java - Microsserviços, Spring Boot e Kubernetes/workspace/.metadata/.plugins/org.eclipse.jdt.core
-4142651149.index
-1501055804.index
-1497782054.index
-1865797976.index

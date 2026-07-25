@@ -1,5 +1,0 @@
-package br.com.gabrielflorentino.java.back.end.repository;
-
-public interface UserRepository {
-
-}

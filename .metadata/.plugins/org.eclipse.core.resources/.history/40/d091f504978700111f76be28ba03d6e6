@@ -1,7 +1,0 @@
-package br.com.gabrielflorentino.java.back.end.model;
-
-
-@Entity
-public class User {
-
-}
