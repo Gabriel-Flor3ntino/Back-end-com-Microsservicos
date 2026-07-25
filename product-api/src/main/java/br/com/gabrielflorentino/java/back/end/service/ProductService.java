@@ -5,7 +5,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import br.com.gabrielflorentino.java.back.end.dto.ProductDTO;
 import br.com.gabrielflorentino.java.back.end.exception.ProductNotFoundException;
@@ -48,6 +50,14 @@ public class ProductService {
 			productRepository.delete(product.get());
 		}
 		throw new ProductNotFoundException();
+	}
+	
+	public ProductDTO getProductByIdentifier(String	productIdentifier) {
+		
+		RestTemplate restTemplate = new RestTemplate();
+		String url = "http://localhost:8081/product/" + productIdentifier;
+		ResponseEntity<ProductDTO> response = restTemplate.getForEntity(url, ProductDTO.class);
+		return response.getBody();
 	}
 
 }

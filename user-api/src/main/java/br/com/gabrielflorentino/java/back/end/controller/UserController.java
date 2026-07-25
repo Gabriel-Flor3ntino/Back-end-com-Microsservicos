@@ -1,7 +1,6 @@
 package br.com.gabrielflorentino.java.back.end.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.gabrielflorentino.java.back.end.dto.UserDTO;
 import br.com.gabrielflorentino.java.back.end.service.UserService;
-import jakarta.annotation.PostConstruct;
 
 @RestController
 public class UserController {
 
 	public static List<UserDTO> usuarios = new ArrayList<UserDTO>();
 
-	@Autowired
 	private UserService userService;
+
+	public UserController(UserService userService) {
+		this.userService = userService;
+	}
 
 	@GetMapping("/users")
 	public List<UserDTO> getUsers() {
@@ -48,8 +49,8 @@ public class UserController {
 	}
 
 	@DeleteMapping("/user/{id}")
-	public UserDTO delete(@PathVariable Long id) {
-		return userService.delete(id);
+	public void delete(@PathVariable Long id) {
+		userService.delete(id);
 	}
 
 	@GetMapping("/user/search")

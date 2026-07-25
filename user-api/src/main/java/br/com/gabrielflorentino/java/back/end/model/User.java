@@ -1,19 +1,19 @@
 package br.com.gabrielflorentino.java.back.end.model;
 
-import br.com.gabrielflorentino.java.back.end.dto.UserDTO;
+import java.util.Date;
 
+import br.com.gabrielflorentino.java.back.end.dto.UserDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import java.util.Date;
 
 @Entity
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private String name;
+	private String nome;
 	private String cpf;
 	private String endereco;
 	private String email;
@@ -28,12 +28,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getCpf() {
@@ -78,7 +78,7 @@ public class User {
 
 	public static User convert(UserDTO userDTO) {
 		User user = new User();
-		user.setName(userDTO.getName());
+		user.setNome(userDTO.getNome());
 		user.setEndereco(userDTO.getEndereco());
 		user.setCpf(userDTO.getCpf());
 		user.setEmail(userDTO.getEmail());

@@ -1,24 +1,22 @@
-package br.com.gabrielflorentino.java.back.end.dto;
+package br.com.gabrielflorentino.java.back.end.DTO;
 
 import java.util.Date;
 
-import br.com.gabrielflorentino.java.back.end.model.User;
-
 public class UserDTO {
 
-	private String nome;
+	private String name;
 	private String cpf;
 	private String endereco;
 	private String email;
 	private String telefone;
 	private Date dataCadastro;
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getCpf() {
@@ -60,5 +58,5 @@ public class UserDTO {
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
-	
+
 }

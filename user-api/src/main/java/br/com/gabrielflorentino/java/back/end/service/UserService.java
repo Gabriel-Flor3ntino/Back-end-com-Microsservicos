@@ -2,11 +2,12 @@ package br.com.gabrielflorentino.java.back.end.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import br.com.gabrielflorentino.java.back.end.converter.DTOConverter;
 import br.com.gabrielflorentino.java.back.end.dto.UserDTO;
 import br.com.gabrielflorentino.java.back.end.model.User;
 import br.com.gabrielflorentino.java.back.end.repository.UserRepository;
@@ -14,53 +15,54 @@ import br.com.gabrielflorentino.java.back.end.repository.UserRepository;
 @Service
 public class UserService {
 
-	@Autowired
-	private UserRepository userRepository;
-	
-	public List<UserDTO> getAll() {
-		List<User> usuarios = userRepository.findAll();
-		return usuarios
-				.stream()
-				.map(UserDTO::convert)
-				.collect(Collectors.toList());
-	}
-	
-	public UserDTO findById(long userId) {
-		Optional<User> usuario = userRepository.findById(userId);
-		if (usuario.isPresent()) {
-			return UserDTO.convert(usuario.get());
-		}
-		return null;
-	}
-	
-	
-	public UserDTO save(UserDTO userDTO) {
-		User user = userRepository.save(User.convert(userDTO));
-		return UserDTO.convert(user);
-	}
-	
-	public UserDTO delete(long userId) {
-		Optional<User> user = userRepository.findById(userId);
-		if (user.isPresent()) {
-			userRepository.delete(user.get());
-		}
-		return null;
-	}
-	
-	public UserDTO findByCpf(String cpf) {
-		User user = userRepository.findByCpf(cpf);
-		if (user != null) {
-			return UserDTO.convert(user);
-		}
-		return null;
-	}
-	
-	public List<UserDTO> queryByName(String name) {
-		List<User> usuarios = userRepository.queryByNameLike(name);
-		return usuarios
-				.stream()
-				.map(UserDTO::convert)
-				.collect(Collectors.toList());
-	}
-	
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public List<UserDTO> getAll() {
+        return convertToDTO(userRepository.findAll());
+    }
+
+    public UserDTO findById(long userId) {
+        return userRepository.findById(userId)
+        		.map(DTOConverter::convert)
+                .orElse(null);
+    }
+
+    public UserDTO save(UserDTO dto) {
+        return DTOConverter.convert(
+                userRepository.save(User.convert(dto))
+        );
+    }
+
+    public void delete(long userId) {
+        userRepository.findById(userId)
+                .ifPresent(userRepository::delete);
+    }
+
+    public UserDTO findByCpf(String cpf) {
+        return Optional.ofNullable(userRepository.findByCpf(cpf))
+        		.map(DTOConverter::convert)
+                .orElse(null);
+    }
+
+    public List<UserDTO> queryByName(String name) {
+        return convertToDTO(userRepository.queryByNameLike(name));
+    }
+
+    private List<UserDTO> convertToDTO(List<User> users) {
+        return users.stream()
+                .map(DTOConverter::convert)
+                .toList();
+    }
+    
+    public UserDTO getUserByCpf(String cpf) {
+    	
+    	RestTemplate restTemplate = new RestTemplate();
+    	String url = "http://localhost:8080/user/cpf/" + cpf;
+    	ResponseEntity<UserDTO> response = restTemplate.getForEntity(url, UserDTO.class);
+    	return response.getBody();
+    }
 }

@@ -2,9 +2,13 @@ package br.com.gabrielflorentino.java.back.end.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import br.com.gabrielflorentino.java.back.end.converter.DTOConverter;
+import br.com.gabrielflorentino.java.back.end.dto.ItemDTO;
+import br.com.gabrielflorentino.java.back.end.dto.ProductDTO;
 import br.com.gabrielflorentino.java.back.end.dto.ShopDTO;
 import br.com.gabrielflorentino.java.back.end.model.Shop;
 import br.com.gabrielflorentino.java.back.end.repository.ShopRepository;
@@ -13,9 +17,13 @@ import br.com.gabrielflorentino.java.back.end.repository.ShopRepository;
 public class ShopService {
 
     private final ShopRepository shopRepository;
-
-    public ShopService(ShopRepository shopRepository) {
+    private ProductService productService;
+    private UserService userService;
+    
+    public ShopService(ShopRepository shopRepository, ProductService productService, UserService userService;) {
         this.shopRepository = shopRepository;
+        this.productService = productService;
+        this.userService = userService;
     }
 
     public List<ShopDTO> getAll() {
@@ -39,21 +47,33 @@ public class ShopService {
     }
 
     public ShopDTO save(ShopDTO shopDTO) {
-        shopDTO.setTotal(
-                (float) shopDTO.getItems()
+    	
+    	if (userService.getUserByCpf(shopDTO.getUserIdentifier()) == null) {
+    		return null;
+    	}
+    	
+    	if (!validateProducts(shopDTO.getItems())) {
+    		return null;
+    	}
+    	
+        shopDTO.setTotal(shopDTO.getItems()
                         .stream()
-                        .mapToDouble(item -> item.getPrice())
-                        .sum());
+                        .map(x -> x.getPrice())
+                        .reduce((float) 0, Float::sum);
 
         Shop shop = Shop.convert(shopDTO);
         shop.setDate(new Date());
 
-        return ShopDTO.convert(shopRepository.save(shop));
+        shop = shopRepository.save(shop);
+        
+        return DTOConverter.convert(shop);
     }
 
-    private List<ShopDTO> convertToDTO(List<Shop> shops) {
+    List<ShopDTO> convertToDTO(List<Shop> shops) {
         return shops.stream()
                 .map(ShopDTO::convert)
                 .toList();
     }
+    
+
 }
