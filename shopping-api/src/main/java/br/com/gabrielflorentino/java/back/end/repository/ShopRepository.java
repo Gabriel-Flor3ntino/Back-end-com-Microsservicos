@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import br.com.gabrielflorentino.java.back.end.model.Shop;
 
 @Repository
-public interface ShopRepository extends JpaRepository<Shop, Long>{
+public interface ShopRepository extends JpaRepository<Shop, Long>, ReportRepository {
 
 	public List<Shop> findAllByUserIdentifier(String userIdentifier);
 	public List<Shop> findAllByTotalGreaterThan(Float total);
