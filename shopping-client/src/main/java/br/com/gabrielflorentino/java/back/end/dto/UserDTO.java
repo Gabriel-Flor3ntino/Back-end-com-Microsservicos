@@ -2,8 +2,6 @@ package br.com.gabrielflorentino.java.back.end.dto;
 
 import java.util.Date;
 
-import br.com.gabrielflorentino.java.back.end.model.User;
-
 public class UserDTO {
 
 	private String nome;
@@ -60,5 +58,5 @@ public class UserDTO {
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
-	
+
 }

@@ -1,7 +1,6 @@
 package br.com.gabrielflorentino.java.back.end.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -9,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 
 import br.com.gabrielflorentino.java.back.end.converter.DTOConverter;
 import br.com.gabrielflorentino.java.back.end.dto.UserDTO;
+import br.com.gabrielflorentino.java.back.end.exception.UserNotFoundException;
 import br.com.gabrielflorentino.java.back.end.model.User;
 import br.com.gabrielflorentino.java.back.end.repository.UserRepository;
 
@@ -43,9 +43,11 @@ public class UserService {
     }
 
     public UserDTO findByCpf(String cpf) {
-        return Optional.ofNullable(userRepository.findByCpf(cpf))
-        		.map(DTOConverter::convert)
-                .orElse(null);
+        User user = userRepository.findByCpf(cpf);
+        if (user != null) {
+        	return DTOConverter.convert(user);
+        }
+        throw new UserNotFoundException();
     }
 
     public List<UserDTO> queryByName(String name) {

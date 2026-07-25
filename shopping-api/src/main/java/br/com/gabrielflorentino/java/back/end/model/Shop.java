@@ -1,5 +1,6 @@
 package br.com.gabrielflorentino.java.back.end.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,7 +24,7 @@ public class Shop {
 	private long id;
 	private String userIdentifier;
 	private float total;
-	private Date date;
+	private LocalDateTime date;
 
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "item", joinColumns = @JoinColumn(name = "shop_id"))
@@ -53,11 +54,11 @@ public class Shop {
 		this.total = total;
 	}
 
-	public Date getDate() {
+	public LocalDateTime getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 

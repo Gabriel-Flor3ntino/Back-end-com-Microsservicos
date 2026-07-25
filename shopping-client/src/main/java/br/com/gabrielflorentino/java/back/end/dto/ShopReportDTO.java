@@ -5,6 +5,7 @@ public class ShopReportDTO {
 	private Integer count;
 	private Double total;
 	private Double mean;
+	
 	public Integer getCount() {
 		return count;
 	}

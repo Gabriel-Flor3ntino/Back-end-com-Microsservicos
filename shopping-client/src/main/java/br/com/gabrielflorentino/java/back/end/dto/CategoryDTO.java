@@ -1,4 +1,4 @@
-package br.com.gabrielflorentino.java.back.end.DTO;
+package br.com.gabrielflorentino.java.back.end.dto;
 
 import jakarta.validation.constraints.NotNull;
 

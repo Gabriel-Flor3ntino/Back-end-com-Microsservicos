@@ -1,5 +1,6 @@
-package br.com.gabrielflorentino.java.back.end.DTO;
+package br.com.gabrielflorentino.java.back.end.dto;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class ShopDTO {
 	private String userIdentifier;
 	
 	private Float total;
-	private Date date;
+	private LocalDateTime date;
 	@NotNull
 	private List<ItemDTO> items;
 
@@ -32,11 +33,11 @@ public class ShopDTO {
 		this.total = total;
 	}
 
-	public Date getDate() {
+	public LocalDateTime getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 

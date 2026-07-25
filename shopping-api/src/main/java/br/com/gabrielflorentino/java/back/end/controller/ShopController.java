@@ -53,10 +53,10 @@ public class ShopController {
 		return shopService.findById(id);
 	}
 	
-	@PostMapping("/shopping")
-	public ShopDTO newShop(@Valid @RequestBody ShopDTO shopDTO) {
-		return shopService.save(shopDTO);
-	}
+//	@PostMapping("/shopping")
+//	public ShopDTO newShop(@Valid @RequestBody ShopDTO shopDTO) {
+//		return shopService.save(shopDTO);
+//	}
 	
 	@GetMapping("/shopping/search")
 	public List<ShopDTO> getShopsByFilter(
