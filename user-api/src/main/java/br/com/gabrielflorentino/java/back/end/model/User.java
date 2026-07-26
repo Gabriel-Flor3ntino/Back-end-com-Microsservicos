@@ -1,24 +1,24 @@
 package br.com.gabrielflorentino.java.back.end.model;
 
-import java.util.Date;
-
 import br.com.gabrielflorentino.java.back.end.dto.UserDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity
+@Entity(name = "user")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+
 	private String nome;
+
 	private String cpf;
+
 	private String endereco;
-	private String email;
-	private String telefone;
-	private Date dataCadastro;
+
+	private String key;
 
 	public long getId() {
 		return id;
@@ -52,28 +52,12 @@ public class User {
 		this.endereco = endereco;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getKey() {
+		return key;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-	public Date getDataCadastro() {
-		return dataCadastro;
-	}
-
-	public void setDataCadastro(Date dataCadastro) {
-		this.dataCadastro = dataCadastro;
+	public void setKey(String key) {
+		this.key = key;
 	}
 
 	public static User convert(UserDTO userDTO) {
@@ -81,9 +65,6 @@ public class User {
 		user.setNome(userDTO.getNome());
 		user.setEndereco(userDTO.getEndereco());
 		user.setCpf(userDTO.getCpf());
-		user.setEmail(userDTO.getEmail());
-		user.setTelefone(userDTO.getTelefone());
-		user.setDataCadastro(userDTO.getDataCadastro());
 		return user;
 	}
 

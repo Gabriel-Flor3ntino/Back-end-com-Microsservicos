@@ -1,6 +1,7 @@
 package br.com.gabrielflorentino.java.back.end.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -31,10 +32,10 @@ public class UserService {
                 .orElse(null);
     }
 
-    public UserDTO save(UserDTO dto) {
-        return DTOConverter.convert(
-                userRepository.save(User.convert(dto))
-        );
+    public UserDTO save(UserDTO userDto) {
+    	userDto.setKey(UUID.randomUUID().toString());
+        User user = userRepository.save(User.convert(userDto));
+        return DTOConverter.convert(user);
     }
 
     public void delete(long userId) {
@@ -42,16 +43,16 @@ public class UserService {
                 .ifPresent(userRepository::delete);
     }
 
-    public UserDTO findByCpf(String cpf) {
-        User user = userRepository.findByCpf(cpf);
-        if (user != null) {
-        	return DTOConverter.convert(user);
-        }
-        throw new UserNotFoundException();
-    }
+	public UserDTO findByCpfAndKey(String cpf, String key) {
+		User user = userRepository.findByCpfAndKey(cpf, key);
+		if (user != null) {
+			return DTOConverter.convert(user);
+		}
+		throw new UserNotFoundException();
+	}
 
     public List<UserDTO> queryByName(String name) {
-        return convertToDTO(userRepository.queryByNameLike(name));
+        return convertToDTO(userRepository.queryByNomeLike(name));
     }
 
     private List<UserDTO> convertToDTO(List<User> users) {
@@ -59,12 +60,5 @@ public class UserService {
                 .map(DTOConverter::convert)
                 .toList();
     }
-    
-    public UserDTO getUserByCpf(String cpf) {
-    	
-    	RestTemplate restTemplate = new RestTemplate();
-    	String url = "http://localhost:8080/user/cpf/" + cpf;
-    	ResponseEntity<UserDTO> response = restTemplate.getForEntity(url, UserDTO.class);
-    	return response.getBody();
-    }
+  
 }

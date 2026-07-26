@@ -1,15 +1,11 @@
 package br.com.gabrielflorentino.java.back.end.dto;
 
-import java.util.Date;
-
 public class UserDTO {
 
 	private String nome;
 	private String cpf;
 	private String endereco;
-	private String email;
-	private String telefone;
-	private Date dataCadastro;
+	private String key;
 
 	public String getNome() {
 		return nome;
@@ -35,28 +31,12 @@ public class UserDTO {
 		this.endereco = endereco;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getKey() {
+		return key;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-	public Date getDataCadastro() {
-		return dataCadastro;
-	}
-
-	public void setDataCadastro(Date dataCadastro) {
-		this.dataCadastro = dataCadastro;
+	public void setKey(String key) {
+		this.key = key;
 	}
 
 }

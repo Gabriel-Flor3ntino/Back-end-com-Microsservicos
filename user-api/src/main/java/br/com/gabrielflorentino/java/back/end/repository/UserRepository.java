@@ -10,7 +10,7 @@ import br.com.gabrielflorentino.java.back.end.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 
-	User findByCpf(String cpf);
+	User findByCpfAndKey(String cpf, String key);
 	
-	List<User> queryByNameLike(String name);
+	List<User> queryByNomeLike(String name);
 }

@@ -1,12 +1,14 @@
 package br.com.gabrielflorentino.java.back.end.service;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import br.com.gabrielflorentino.java.back.end.dto.ProductDTO;
 import br.com.gabrielflorentino.java.back.end.exception.UserNotFoundException;
 
+@Service
 public class ProductService {
 
 	public ProductDTO getProductByIdentifier(String productIdentifier) {

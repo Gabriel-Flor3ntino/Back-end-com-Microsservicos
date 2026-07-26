@@ -1,6 +1,7 @@
 package br.com.gabrielflorentino.java.back.end.repository;
 
 import java.math.BigInteger;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class ReportRepositoryImpl implements ReportRepository{
 	
 	
 	@Override
-	public List<Shop> getShopByFilters(Date dataInicio, Date dataFim, Float valorMinimo) {
+	public List<Shop> getShopByFilters(LocalDate dataInicio, LocalDate dataFim, Float valorMinimo) {
 		
 		StringBuilder sb = new StringBuilder();
 		sb.append("select s ");
@@ -47,7 +48,7 @@ public class ReportRepositoryImpl implements ReportRepository{
 	}
 
 	@Override
-	public ShopReportDTO getReportByDate(Date dataInicio, Date dataFim) {
+	public ShopReportDTO getReportByDate(LocalDate dataInicio, LocalDate dataFim) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("select count(sp.id), sum(sp.total), avg(sp.total");
 		
