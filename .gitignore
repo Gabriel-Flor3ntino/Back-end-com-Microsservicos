@@ -31,3 +31,5 @@ simple-user-api/.idea
 /.metadata/
 
 *.iml
+/.vscode/
+/.idea/
