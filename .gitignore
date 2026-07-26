@@ -1,22 +1,33 @@
-# Maven
-target/
+user-api/.classpath
+user-api/.project
+user-api/.settings/
+user-api/target/
+user-api/.idea
 
-# Eclipse
-.project
-.classpath
-.settings/
+shopping-client/.classpath
+shopping-client/.project
+shopping-client/.settings/
+shopping-client/target/
+shopping-client/.idea
 
-# IntelliJ
-.idea/
+product-api/.settings/
+product-api/target/
+product-api/.classpath
+product-api/.project
+product-api/.idea
+
+shopping-api/.classpath
+shopping-api/.project
+shopping-api/.settings/
+shopping-api/target/
+shopping-api/.idea
+
+simple-user-api/.classpath
+simple-user-api/.project
+simple-user-api/.settings/
+simple-user-api/target/
+simple-user-api/.idea
+
+/.metadata/
+
 *.iml
-
-# VS Code
-.vscode/
-
-# Logs
-*.log
-
-# Sistema Operacional
-.DS_Store
-Thumbs.db
-.metadata/

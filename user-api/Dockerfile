@@ -2,7 +2,7 @@ FROM eclipse-temurin:25-jre
 
 VOLUME /tmp
 
-ARG JAR_FILE=target/back.end-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=target/user-api-0.0.1-SNAPSHOT.jar
 
 COPY ${JAR_FILE} app.jar
 
